@@ -4,7 +4,8 @@ import java.io.IOException;
 import app.bean.AuthNews;
 import app.bean.User;
 import app.controller.concrete.Command;
-import app.logic.UserRepository;
+import app.dao.user.UserDaoImpl;
+import app.service.user.UserService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,10 +14,10 @@ import jakarta.servlet.http.HttpSession;
 
 public class DoAuth implements Command {
 	
-	private final UserRepository userRepository;
+	private final UserService userService;
 	
-	public DoAuth(UserRepository repo) {
-		this.userRepository = repo;
+	public DoAuth(UserService userService) {
+		this.userService = userService;
 	}
 
 	@Override
@@ -29,7 +30,7 @@ public class DoAuth implements Command {
 	        dispatcher.forward(request, response);
 	    } else {
 	        System.out.println("Performing user authentication. Login: " + login);
-	        User user = userRepository.authenticate(new AuthNews(login, password));
+	        User user = userService.authenticate(new AuthNews(login, password));
 
 	        if (user != null) {
 	            request.getSession().invalidate();

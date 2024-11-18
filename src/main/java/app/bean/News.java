@@ -10,14 +10,29 @@ public class News implements Serializable {
 	private String title;
 	
 	private String brief;
+
+	private String text;
 	
 	public News() {
 	}
-	
+
 	public News(String title, String brief) {
-		super();
 		this.title = title;
 		this.brief = brief;
+	}
+
+	public News(String title, String brief, String text) {
+		this.title = title;
+		this.brief = brief;
+		this.text = text;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
 	}
 
 	public String getTitle() {
