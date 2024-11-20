@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="web_homew_news" target="15" />
+      <module name="web_homew_news" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

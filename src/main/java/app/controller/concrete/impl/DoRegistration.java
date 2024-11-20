@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 public class DoRegistration implements Command {
 
@@ -25,7 +26,15 @@ public class DoRegistration implements Command {
         System.out.println("password " + request.getParameter("password"));
         System.out.println("email " + request.getParameter("email"));
 
-        User user = new User(request.getParameter("email"), request.getParameter("password"));
+        User user = new User(
+                request.getParameter("email"),
+                request.getParameter("password"),
+                request.getParameter("name"),
+                request.getParameter("surname"),
+                User.Role.valueOf(request.getParameter("role")),
+                LocalDateTime.now()
+        );
+
         userService.save(user);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/auth.jsp");

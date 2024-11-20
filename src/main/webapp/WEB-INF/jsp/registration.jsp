@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Регистрация - Изучаем Java</title>
+    <title>Регистрация - Maine Coon Times</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -33,9 +33,21 @@
             <input type="text" id="inputName" name="username" class="form-control" required>
         </div>
         <div class="form-group">
+            <label for="inputSurname">Фамилия</label>
+            <input type="text" id="inputSurname" name="usersurname" class="form-control" required>
+        </div>
+        <div class="form-group">
             <label for="inputEmail">Email адрес</label>
             <input type="email" id="inputEmail" name="email" class="form-control" required>
         </div>
+         <div class="form-group">
+            <label for="selectRole">Роль</label>
+            <select id="selectRole" name="role" class="form-control" required>
+            <option value="READER">Читатель</option>
+            <option value="JOURNALIST">Журналист</option>
+            </select>
+        </div>
+       
         <div class="form-group">
             <label for="inputPassword">Пароль</label>
             <input type="password" id="inputPassword" name="password" class="form-control" required>

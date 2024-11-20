@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Java Wizard: Искусство Программирования</title>
+    <title>Maine Coon Times</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -62,8 +62,14 @@
 <body>
 
 <div class="header">
-    <h1>Java Wizard: Искусство Программирования</h1>
-    <a href="Controller?command=do_auth" class="auth-button">Войти / Регистрация</a>
+    <h1>Maine Coon Times</h1>
+    <c:if test="${sessionScope.get('user') == null}">
+        <a href="Controller?command=do_auth" class="auth-button">Войти / Регистрация</a>
+    </c:if>
+    <c:if test="${sessionScope.get('user') != null}">
+        <a href="Controller?command=logout" class="auth-button">Выйти</a>
+    </c:if>
+
 </div>
 
 <div class="container">
@@ -84,7 +90,7 @@
 </div>
 
 <div class="footer">
-    <p>&copy; 2024 Изучаем Java. Все права защищены.</p>
+    <p>&copy; 2024 Maine Coon Times. Все права защищены.</p>
 </div>
 
 </body>

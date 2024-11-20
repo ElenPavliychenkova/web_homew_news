@@ -23,6 +23,7 @@ public class CommandProvider {
         commands.put(CommandName.GO_TO_REGISTRATION_PAGE, new GoToRegistrationPage());
         commands.put(CommandName.GO_TO_INDEX_PAGE, new GoToIndexPage(newsService));
         commands.put(CommandName.GO_TO_MAIN_PAGE, new GoToMainPage());
+        commands.put(CommandName.LOGOUT,new Logout());
         commands.put(CommandName.NO_SUCH_COMMAND, new NoSuchCommand());
     }
 

@@ -32,7 +32,11 @@ public class Controller extends HttpServlet {
 	}
 
 	private void doRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
+		Object user = request.getSession().getAttribute("user");
+		if (user == null) {
+			System.out.println("ATTENTION USER NOT FOUND!!!!!!!!!!!!!");
+		}
 		String userCommand = request.getParameter("command");
 		System.out.println("fetched command " +  userCommand);
 

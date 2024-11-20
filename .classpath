@@ -43,6 +43,8 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: com.mysql:mysql-connector-j:8.0.33"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: com.google.protobuf:protobuf-java:3.21.9"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: jakarta.servlet:jakarta.servlet-api:5.0.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.glassfish.web:jakarta.servlet.jsp.jstl:2.0.0"/>

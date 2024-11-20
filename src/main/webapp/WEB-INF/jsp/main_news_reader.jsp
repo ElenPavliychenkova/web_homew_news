@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Добро пожаловать в курс Java!</title>
+    <title>Добро пожаловать в личный кабинет</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -48,14 +48,14 @@
 <body>
 
 <div class="container text-center">
-    <h1 class="welcome-heading">Добро пожаловать на курс Java!</h1>
-    <p class="lead">Поздравляем с успешным входом на платформу. Вы готовы начать изучение?</p>
+    <h1 class="welcome-heading">Добро пожаловать в личный кабинет</h1>
+    <p class="lead">Поздравляем с успешным входом на платформу. Вы готовы узнать больше о котиках^^</p>
     
     <p class="lead">
          <c:out value="${requestScope.invitationMessage}" />	 </p>
 		<c:out value="${sessionScope.user.name}" />
 		<div class="footer">
-			<p>&copy; 2024 Изучаем Java. Все права защищены.</p>
+			<p>&copy; 2024 "Maine Coon Times".  Все права защищены.</p>
 		</div>
 	</div>
 

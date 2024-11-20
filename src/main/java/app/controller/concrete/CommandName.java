@@ -7,6 +7,7 @@ public enum CommandName {
 	GO_TO_INDEX_PAGE, 
 	GO_TO_REGISTRATION_PAGE,
 	GO_TO_MAIN_PAGE,
+	LOGOUT,
 	
 	NO_SUCH_COMMAND
 

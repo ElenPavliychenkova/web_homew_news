@@ -18,6 +18,8 @@
 	<lib name="Maven: org.apache.maven.wagon:wagon-ssh:1.0-beta-2" scope="RUNTIME"/>
 	<lib name="Maven: com.jcraft:jsch:0.1.27" scope="RUNTIME"/>
 	<levels>
+		<level name="Maven: com.mysql:mysql-connector-j:8.0.33" value="project"/>
+		<level name="Maven: com.google.protobuf:protobuf-java:3.21.9" value="project"/>
 		<level name="Maven: jakarta.servlet:jakarta.servlet-api:5.0.0" value="project"/>
 		<level name="Maven: jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6" value="project"/>
 		<level name="Maven: org.glassfish.web:jakarta.servlet.jsp.jstl:2.0.0" value="project"/>
