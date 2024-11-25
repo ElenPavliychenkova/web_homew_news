@@ -11,19 +11,22 @@
             padding-bottom: 40px;
             background-color: #40E0D0;
         }
+
         .container {
             max-width: 600px;
             padding: 15px;
             margin: auto;
             background-color: #00796b;
             border-radius: 7px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             color: #ffffff;
         }
+
         .welcome-heading {
             color: #ffffff;
             margin-bottom: 20px;
         }
+
         .footer {
             text-align: center;
             padding: 20px 0;
@@ -31,6 +34,7 @@
             border-top: 1px solid #e5e5e5;
             color: #f5f5f5;
         }
+
         .btn-custom {
             background-color: #007bff;
             color: #ffffff;
@@ -40,6 +44,7 @@
             border-radius: 5px;
             margin: 5px;
         }
+
         .btn-custom:hover {
             background-color: #0056b3;
         }
@@ -50,14 +55,21 @@
 <div class="container text-center">
     <h1 class="welcome-heading">Добро пожаловать в личный кабинет</h1>
     <p class="lead">Поздравляем с успешным входом на платформу. Вы готовы узнать больше о котиках^^</p>
-    
+
     <p class="lead">
-         <c:out value="${requestScope.invitationMessage}" />	 </p>
-		<c:out value="${sessionScope.user.name}" />
-		<div class="footer">
-			<p>&copy; 2024 "Maine Coon Times".  Все права защищены.</p>
-		</div>
-	</div>
+        <c:out value="${requestScope.invitationMessage}"/></p>
+    <c:out value="${sessionScope.user.name}"/>
+    <div class="content">
+        <form action="Controller" method="post">
+        <input type="hidden" name="command" value="logout"/>
+        <button type="submit" class="btn btn-custom">Выйти</button>
+    </form>
+  
+    <div class="footer">
+        <a href="Controller?command=go_to_index_page" class="link">На главную</a>
+        <p>&copy; 2024 "Maine Coon Times". Все права защищены.</p>
+    </div>
+</div>
 
 </body>
 </html>

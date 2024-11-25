@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="jakarta.servlet.*" %>
 <%@ page import="jakarta.servlet.http.*" %>
 <%@ page import="java.io.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +16,7 @@
             background-color: #40E0D0;
             font-family: 'Arial', sans-serif;
         }
+
         .header {
             display: flex;
             justify-content: space-between;
@@ -25,6 +26,7 @@
             color: #ffffff;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
+
         .auth-button {
             background-color: #ffffff;
             color: #00796b;
@@ -32,10 +34,12 @@
             text-decoration: none;
             padding: 8px 15px;
         }
+
         .container {
             max-width: 800px;
             margin-top: 20px;
         }
+
         .news-card {
             background-color: #ffffff;
             border-radius: 15px;
@@ -43,12 +47,15 @@
             margin-bottom: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
+
         .news-card h5 {
             color: #00796b;
         }
+
         .news-card p {
             color: #333333;
         }
+
         .footer {
             margin-top: 40px;
             color: #f5f5f5;
@@ -76,11 +83,22 @@
     <c:choose>
         <c:when test="${not empty newsList}">
             <c:forEach var="news" items="${newsList}">
-                <div class="news-card">
-                    <h5>${news.title}</h5>
-                    <p>${news.brief}</p>
-                    <a href="#" class="btn btn-primary">Далее</a>
-                </div>
+                <form action="Controller" method="post" accept-charset="UTF-8">
+                    <input type="hidden" name="command" value="go_to_index_page" />
+                    <input type="hidden" name="id" value="${news.id}" />
+                    <div class="news-card">
+                        <h5>${news.title}</h5>
+
+                        <c:if test="${open_news_id == news.id}">
+                            <p>${news.text}</p>
+                        </c:if>
+                         <c:if test="${open_news_id != news.id}">
+                            <p>${news.brief}</p>
+                        </c:if>
+
+                        <button class="btn btn-primary" type="submit">Открыть</button>
+                    </div>
+                </form>
             </c:forEach>
         </c:when>
         <c:otherwise>

@@ -36,17 +36,24 @@
         }
 
         .btn-custom {
-            background-color: #007bff;
+            background-color: #40E0D0; 
             color: #ffffff;
             font-size: 1.2em;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            margin: 5px;
+            margin: 10px 5px;
         }
 
         .btn-custom:hover {
-            background-color: #0056b3;
+            background-color: #20b2aa;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; 
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -60,12 +67,14 @@
         <c:out value="${requestScope.invitationMessage}"/></p>
     <c:out value="${sessionScope.user.name}"/>
 
-    <div class="content">
-        <a href="lessons.html" class="btn btn-lg btn-success">Добавить новость</a>
-        <a href="profile.html" class="btn btn-lg btn-info" style="margin-left: 20px;">Удалить новость</a>
-        <a href="Controller?command=go_to_index_page" class="btn btn-lg btn-primary" style="margin-left: 20px;">На главную</a>
+    <div class="btn-container">
+        <a href="Controller?command=go_to_index_page" class="btn btn-custom">На главную</a>
+        <form action="Controller" method="post" style="display: inline;">
+            <input type="hidden" name="command" value="logout"/>
+            <button type="submit" class="btn btn-custom">Выйти</button>
+        </form>
     </div>
-
+  
     <div class="footer">
         <p>&copy; 2024 "Maine Coon Times". Все права защищены.</p>
     </div>

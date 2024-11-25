@@ -7,6 +7,8 @@ public class News implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
+	private Integer id;
+
 	private String title;
 	
 	private String brief;
@@ -21,10 +23,19 @@ public class News implements Serializable {
 		this.brief = brief;
 	}
 
-	public News(String title, String brief, String text) {
+	public News(Integer id, String title, String brief, String text) {
+		this.id = id;
 		this.title = title;
 		this.brief = brief;
 		this.text = text;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getText() {
