@@ -46,6 +46,9 @@
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .news-card h5 {
@@ -54,6 +57,12 @@
 
         .news-card p {
             color: #333333;
+        }
+
+        .news-card .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
         }
 
         .footer {
@@ -70,41 +79,64 @@
 
 <div class="header">
     <h1>Maine Coon Times</h1>
-    <c:if test="${sessionScope.get('user') == null}">
-        <a href="Controller?command=do_auth" class="auth-button">Войти / Регистрация</a>
-    </c:if>
-    <c:if test="${sessionScope.get('user') != null}">
-        <a href="Controller?command=logout" class="auth-button">Выйти</a>
-    </c:if>
-
+    <c:choose>
+        <c:when test="${sessionScope.user == null}">
+            <a href="Controller?command=do_auth" class="auth-button">Войти / Регистрация</a>
+        </c:when>
+        <c:otherwise>
+            <span>Привет, ${sessionScope.user.name}!</span>
+            <a href="Controller?command=logout" class="auth-button">Выйти</a>
+        </c:otherwise>
+    </c:choose>
 </div>
 
 <div class="container">
     <c:choose>
         <c:when test="${not empty newsList}">
             <c:forEach var="news" items="${newsList}">
-                <form action="Controller" method="post" accept-charset="UTF-8">
-                    <input type="hidden" name="command" value="go_to_index_page" />
-                    <input type="hidden" name="id" value="${news.id}" />
-                    <div class="news-card">
-                        <h5>${news.title}</h5>
 
-                        <c:if test="${open_news_id == news.id}">
-                            <p>${news.text}</p>
-                        </c:if>
-                         <c:if test="${open_news_id != news.id}">
-                            <p>${news.brief}</p>
+                <div class="news-card">
+
+                    <h5>${news.title}</h5>
+                    <c:if test="${open_news_id == news.id}">
+                        <p>${news.text}</p>
+                    </c:if>
+                    <c:if test="${open_news_id != news.id}">
+                        <p>${news.brief}</p>
+                    </c:if>
+                    <div class="btn-group">
+
+                        <form action="Controller" method="post" accept-charset="UTF-8">
+                            <input type="hidden" name="id" value="${news.id}"/>
+
+                            <input type="hidden" name="command" value="go_to_index_page"/>
+                            <button class="btn btn-primary" type="submit">Открыть</button>
+                        </form>
+
+                        <c:if test="${role == 'ADMIN' || role == 'JOURNALIST' }">
+                            <form action="Controller" method="post" style="display: inline;">
+                                <input type="hidden" name="id" value="${news.id}"/>
+                                <input type="hidden" name="command" value="delete_news"/>
+                                <button class="btn btn-danger" type="submit">Удалить</button>
+                            </form>
                         </c:if>
 
-                        <button class="btn btn-primary" type="submit">Открыть</button>
                     </div>
-                </form>
+                </div>
             </c:forEach>
         </c:when>
         <c:otherwise>
             <p>Нет доступных новостей.</p>
         </c:otherwise>
     </c:choose>
+    <c:if test="${role == 'ADMIN' || role == 'JOURNALIST' }">
+        <div class="text-center mt-5">
+            <form action="Controller" method="post" >
+                <input type="hidden" name="command" value="go_to_add_news_page" />
+                <button class="btn btn-success btn-lg" type="submit">Добавить новость</button>
+            </form>
+        </div>
+    </c:if>
 </div>
 
 <div class="footer">
