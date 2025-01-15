@@ -1,12 +1,14 @@
 package project.web.app.service.user;
 
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.PreparedStatement;
+import java.time.Instant;
 import project.web.app.bean.AuthNews;
 import project.web.app.bean.User;
 import project.web.app.dao.user.UserDao;
 import project.web.app.exceptions.auth.AuthenticationException;
 import project.web.app.exceptions.user.UserNotFoundException;
-
-import java.sql.SQLException;
 
 public class UserServiceImpl implements UserService {
 
@@ -20,6 +22,7 @@ public class UserServiceImpl implements UserService {
 
         userDao.save(user);
     }
+
 
     public User authenticate(AuthNews userRequest) {
 

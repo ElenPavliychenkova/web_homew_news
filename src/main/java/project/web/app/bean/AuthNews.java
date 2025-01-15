@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class AuthNews implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 
 	private String login;
@@ -51,5 +52,6 @@ public class AuthNews implements Serializable {
 		AuthNews other = (AuthNews) obj;
 		return Objects.equals(login, other.login) && Objects.equals(password, other.password);
 	}
+	
 
 }

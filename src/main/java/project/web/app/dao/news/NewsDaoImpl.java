@@ -1,8 +1,8 @@
 package project.web.app.dao.news;
 
 import project.web.app.bean.News;
-import project.web.app.connections.ConnectionPool;
-import project.web.app.connections.ConnectionPoolException;
+import project.web.app.dao.connections.ConnectionPool;
+import project.web.app.dao.connections.ConnectionPoolException;
 
 import java.sql.*;
 import java.util.ArrayList;

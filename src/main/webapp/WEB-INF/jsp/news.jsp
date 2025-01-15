@@ -25,6 +25,7 @@
             background-color: #00796b;
             color: #ffffff;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
         }
 
         .auth-button {
@@ -33,6 +34,13 @@
             border-radius: 15px;
             text-decoration: none;
             padding: 8px 15px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .auth-button:hover {
+            background-color: #00796b;
+            color: #ffffff;
         }
 
         .container {
@@ -65,6 +73,30 @@
             margin-top: 10px;
         }
 
+        .btn-primary {
+            background-color: #00796b;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #005f54;
+        }
+
+        .btn-danger {
+            background-color: #DDA0DD; /* Нежно-фиолетовый цвет */
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: bold;
+        }
+
+        .btn-danger:hover {
+            background-color: #BA55D3;
+            transform: scale(1.05);
+        }
+
         .footer {
             margin-top: 40px;
             color: #f5f5f5;
@@ -94,9 +126,7 @@
     <c:choose>
         <c:when test="${not empty newsList}">
             <c:forEach var="news" items="${newsList}">
-
                 <div class="news-card">
-
                     <h5>${news.title}</h5>
                     <c:if test="${open_news_id == news.id}">
                         <p>${news.text}</p>
@@ -105,10 +135,8 @@
                         <p>${news.brief}</p>
                     </c:if>
                     <div class="btn-group">
-
                         <form action="Controller" method="post" accept-charset="UTF-8">
                             <input type="hidden" name="id" value="${news.id}"/>
-
                             <input type="hidden" name="command" value="go_to_index_page"/>
                             <button class="btn btn-primary" type="submit">Открыть</button>
                         </form>
@@ -120,7 +148,6 @@
                                 <button class="btn btn-danger" type="submit">Удалить</button>
                             </form>
                         </c:if>
-
                     </div>
                 </div>
             </c:forEach>
@@ -131,8 +158,8 @@
     </c:choose>
     <c:if test="${role == 'ADMIN' || role == 'JOURNALIST' }">
         <div class="text-center mt-5">
-            <form action="Controller" method="post" >
-                <input type="hidden" name="command" value="go_to_add_news_page" />
+            <form action="Controller" method="post">
+                <input type="hidden" name="command" value="go_to_add_news_page"/>
                 <button class="btn btn-success btn-lg" type="submit">Добавить новость</button>
             </form>
         </div>

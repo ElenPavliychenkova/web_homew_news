@@ -1,7 +1,7 @@
 package project.web.app.controller.concrete;
 
-import project.web.app.connections.ConnectionPool;
-import project.web.app.connections.ConnectionPoolException;
+import project.web.app.dao.connections.ConnectionPool;
+import project.web.app.dao.connections.ConnectionPoolException;
 import project.web.app.controller.concrete.impl.*;
 import project.web.app.dao.news.NewsDaoImpl;
 import project.web.app.dao.user.UserDaoImpl;
@@ -17,7 +17,7 @@ public class CommandProvider {
 
     private final Map<CommandName, Command> commands = new HashMap<>();
 
-    private ConnectionPool connectionPool = null;
+    private ConnectionPool connectionPool;
     private final UserService userService;
     private final NewsService newsService;
 
@@ -30,7 +30,7 @@ public class CommandProvider {
         }
         try {
             connectionPool = ConnectionPool.create(
-                    "jdbc:mysql://localhost:3306/news_meincoon?useSSL=false",
+                    "jdbc:mysql://localhost:3306/news_meincoon?allowPublicKeyRetrieval=true&useSSL=false",
                     "root",
                     "admin",
                     10
