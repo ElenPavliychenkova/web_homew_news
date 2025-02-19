@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component LANGUAGE_LEVEL="JDK_15_PREVIEW" jdk="17" jdk_type="JavaSDK">
+<component LANGUAGE_LEVEL="JDK_1_5" jdk="17" jdk_type="JavaSDK">
 	<output-test url="file://$MODULE_DIR$/target/test-classes"/>
 	<contentEntry url="file://$MODULE_DIR$">
 		<testFolder url="file://$MODULE_DIR$/src/test/java"/>
 		<testFolder url="file://$MODULE_DIR$/src/test/resources"/>
 		<excludeFolder url="file://$MODULE_DIR$/target"/>
 	</contentEntry>
-	<lib name="Maven: jakarta.servlet:jakarta.servlet-api:5.0.0" scope="PROVIDED"/>
+	<lib name="Maven: jakarta.enterprise:jakarta.enterprise.cdi-api:3.0.0" scope="PROVIDED"/>
+	<lib name="Maven: jakarta.interceptor:jakarta.interceptor-api:2.0.0" scope="PROVIDED"/>
+	<lib name="Maven: jakarta.annotation:jakarta.annotation-api:2.0.0" scope="PROVIDED"/>
+	<lib name="Maven: jakarta.inject:jakarta.inject-api:2.0.0" scope="PROVIDED"/>
+	<lib name="Maven: jakarta.servlet:jakarta.servlet-api:6.0.0" scope="PROVIDED"/>
 	<lib name="Maven: jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6" scope="PROVIDED"/>
 	<lib name="Maven: org.apache.maven.wagon:wagon-file:1.0-beta-2" scope="RUNTIME"/>
 	<lib name="Maven: org.apache.maven.wagon:wagon-http-lightweight:1.0-beta-2" scope="RUNTIME"/>
@@ -20,13 +24,17 @@
 	<levels>
 		<level name="Maven: com.mysql:mysql-connector-j:8.0.33" value="project"/>
 		<level name="Maven: com.google.protobuf:protobuf-java:3.21.9" value="project"/>
-		<level name="Maven: jakarta.servlet:jakarta.servlet-api:5.0.0" value="project"/>
+		<level name="Maven: jakarta.enterprise:jakarta.enterprise.cdi-api:3.0.0" value="project"/>
+		<level name="Maven: jakarta.el:jakarta.el-api:4.0.0" value="project"/>
+		<level name="Maven: jakarta.interceptor:jakarta.interceptor-api:2.0.0" value="project"/>
+		<level name="Maven: jakarta.annotation:jakarta.annotation-api:2.0.0" value="project"/>
+		<level name="Maven: jakarta.inject:jakarta.inject-api:2.0.0" value="project"/>
+		<level name="Maven: jakarta.servlet:jakarta.servlet-api:6.0.0" value="project"/>
 		<level name="Maven: jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6" value="project"/>
 		<level name="Maven: commons-fileupload:commons-fileupload:1.4" value="project"/>
 		<level name="Maven: commons-io:commons-io:2.2" value="project"/>
 		<level name="Maven: org.glassfish.web:jakarta.servlet.jsp.jstl:2.0.0" value="project"/>
 		<level name="Maven: jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:2.0.0" value="project"/>
-		<level name="Maven: jakarta.el:jakarta.el-api:4.0.0" value="project"/>
 		<level name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:3.0.0" value="project"/>
 		<level name="Maven: com.sun.activation:jakarta.activation:2.0.0" value="project"/>
 		<level name="Maven: org.apache.tomcat.maven:tomcat7-maven-plugin:2.2" value="project"/>

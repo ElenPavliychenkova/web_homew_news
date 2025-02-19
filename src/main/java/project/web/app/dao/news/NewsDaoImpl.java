@@ -31,8 +31,8 @@ public class NewsDaoImpl implements NewsDao {
 
 
         String INSERT_NEWS_SQL = """
-                insert into news (title, brief, text, author_id) values
-                (?,?,?,?)
+                insert into news (title, brief, text, author_id, image_path) values
+                (?,?,?,?,?)
                 """;
 
 
@@ -43,6 +43,7 @@ public class NewsDaoImpl implements NewsDao {
             preparedStatement.setString(2, news.getBrief());
             preparedStatement.setString(3, news.getText());
             preparedStatement.setLong(4, news.getAuthorId());
+            preparedStatement.setString(5, news.getImage());
 
             preparedStatement.executeUpdate();
             System.out.println("News " + news.getTitle() + " saved to database");
@@ -83,7 +84,7 @@ public class NewsDaoImpl implements NewsDao {
     public List<News> getAll() {
 
         String GET_ALL_NEWS = """
-                select id, title, brief, text, author_id
+                select id, title, brief, text, author_id, image_path
                 from news
                 """;
 
@@ -101,6 +102,7 @@ public class NewsDaoImpl implements NewsDao {
                 news.setBrief(resultSet.getString("brief"));
                 news.setText(resultSet.getString("text"));
                 news.setAuthorId(resultSet.getLong("author_id"));
+                news.setImage(resultSet.getString("image_path"));
                 newsList.add(news);
             }
         } catch (SQLException | ConnectionPoolException e) {

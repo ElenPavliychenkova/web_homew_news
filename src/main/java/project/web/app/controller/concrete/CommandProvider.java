@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class CommandProvider {
 
-    private final Map<CommandName, Command> commands = new HashMap<>();
+    private final Map<CommandName, Command> commands = new HashMap<CommandName, Command>();
 
     private ConnectionPool connectionPool;
     private final UserService userService;

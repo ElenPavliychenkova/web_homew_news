@@ -59,7 +59,7 @@
     <p>
         Нет аккаунта? <a href="Controller?command=go_to_registration_page" class="text-white">Зарегистрируйтесь</a>
     </p>
-    <h2>Тут будут еще свежие новости...</h2>
+    <h2></h2>
     <c:out value="${requestScope.mainNews.title}"/>
     <br/>
     <c:out value="${requestScope.mainNews.brief}"/>
