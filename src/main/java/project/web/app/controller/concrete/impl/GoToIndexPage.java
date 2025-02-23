@@ -21,8 +21,6 @@ public class GoToIndexPage implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.print("!!!! go to the index page");
-
 		Object id = request.getParameter("id");
 
 		System.out.println("fetched id = " + id);
