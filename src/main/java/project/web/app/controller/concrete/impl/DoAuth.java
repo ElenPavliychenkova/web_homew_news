@@ -2,7 +2,6 @@ package project.web.app.controller.concrete.impl;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -12,9 +11,6 @@ import project.web.app.controller.concrete.Command;
 import project.web.app.service.user.UserService;
 
 import java.io.IOException;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.UUID;
 
 public class DoAuth implements Command {
 
@@ -43,19 +39,6 @@ public class DoAuth implements Command {
         try {
             User user = userService.authenticate(new AuthNews(login, password));
 
-            UUID uuid = UUID.randomUUID();
-            Instant expiredTime = Instant.now().plus(7, ChronoUnit.DAYS);
-
-            Cookie userIdCookie = new Cookie("userid", uuid.toString());
-            userIdCookie.setHttpOnly(true);
-            userIdCookie.setMaxAge(7 * 24 * 60 * 60);
-            response.addCookie(userIdCookie);
-
-            Cookie expiredTimeCookie = new Cookie("expiredTime", String.valueOf(expiredTime.toEpochMilli()));
-            expiredTimeCookie.setHttpOnly(true);
-            expiredTimeCookie.setMaxAge(7 * 24 * 60 * 60);
-            response.addCookie(expiredTimeCookie);
-
 
             request.getSession().invalidate();
             HttpSession session = request.getSession(true);
@@ -64,8 +47,9 @@ public class DoAuth implements Command {
 
             response.sendRedirect("Controller?command=go_to_main_page");
             return;
+
         } catch (RuntimeException e) {
-            System.out.println("fetched e " + e.getMessage());
+            System.out.println("Authentication error: " + e.getMessage());
         }
 
         request.setAttribute("authError", "Wrong login or password!");

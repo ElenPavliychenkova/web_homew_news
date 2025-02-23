@@ -1,8 +1,8 @@
 package project.web.app.dao.user;
 
 import project.web.app.bean.User;
-import project.web.app.connections.ConnectionPool;
-import project.web.app.connections.ConnectionPoolException;
+import project.web.app.dao.connections.ConnectionPool;
+import project.web.app.dao.connections.ConnectionPoolException;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -14,6 +14,7 @@ public class UserDaoImpl implements UserDao {
     public UserDaoImpl(ConnectionPool connectionPool) {
         this.connectionPool = connectionPool;
     }
+
 
     @Override
     public void save(User user) {

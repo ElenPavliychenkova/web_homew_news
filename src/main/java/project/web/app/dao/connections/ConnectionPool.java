@@ -1,4 +1,4 @@
-package project.web.app.connections;
+package project.web.app.dao.connections;
 
 import java.sql.Array;
 import java.sql.Blob;
@@ -27,7 +27,7 @@ public final class ConnectionPool implements AutoCloseable {
 	BlockingQueue<Connection> availableConnections;
 	BlockingQueue<Connection> usedConnections;
 
-	private ConnectionPool() {
+	public ConnectionPool() {
 	}
 
 	public static ConnectionPool create(String url, String user, String password, int poolSize)
@@ -254,7 +254,7 @@ public final class ConnectionPool implements AutoCloseable {
 
 		@Override
 		public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency,
-				int resultSetHoldability) throws SQLException {
+											 int resultSetHoldability) throws SQLException {
 			return innerConnection.prepareCall(sql, resultSetType, resultSetConcurrency, resultSetHoldability);
 		}
 
@@ -286,7 +286,7 @@ public final class ConnectionPool implements AutoCloseable {
 
 		@Override
 		public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency,
-				int resultSetHoldability) throws SQLException {
+												  int resultSetHoldability) throws SQLException {
 			return innerConnection.prepareStatement(sql, resultSetType, resultSetConcurrency, resultSetHoldability);
 		}
 

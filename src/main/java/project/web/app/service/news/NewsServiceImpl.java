@@ -2,7 +2,6 @@ package project.web.app.service.news;
 
 import project.web.app.bean.News;
 import project.web.app.dao.news.NewsDao;
-import project.web.app.dao.news.NewsDaoImpl;
 
 import java.util.List;
 

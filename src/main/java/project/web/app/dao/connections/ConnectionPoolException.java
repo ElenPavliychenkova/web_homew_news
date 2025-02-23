@@ -1,4 +1,4 @@
-package project.web.app.connections;
+package project.web.app.dao.connections;
 
 public class ConnectionPoolException extends Exception {
 	private static final long serialVersionUID = 1L;

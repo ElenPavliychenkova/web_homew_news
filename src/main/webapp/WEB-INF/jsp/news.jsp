@@ -25,6 +25,7 @@
             background-color: #00796b;
             color: #ffffff;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
         }
 
         .auth-button {
@@ -33,6 +34,13 @@
             border-radius: 15px;
             text-decoration: none;
             padding: 8px 15px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .auth-button:hover {
+            background-color: #00796b;
+            color: #ffffff;
         }
 
         .container {
@@ -47,22 +55,61 @@
             margin-bottom: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             display: flex;
-            flex-direction: column;
             align-items: flex-start;
+            gap: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .news-card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .news-card .content {
+            flex-grow: 1;
         }
 
         .news-card h5 {
             color: #00796b;
+            margin-top: 0;
         }
 
         .news-card p {
             color: #333333;
+            margin: 10px 0;
         }
 
         .news-card .btn-group {
             display: flex;
             gap: 10px;
             margin-top: 10px;
+        }
+
+        .btn-primary {
+            background-color: #00796b;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #005f54;
+        }
+
+        .btn-danger {
+            background-color: #DDA0DD;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: bold;
+        }
+
+        .btn-danger:hover {
+            background-color: #BA55D3;
+            transform: scale(1.05);
         }
 
         .footer {
@@ -72,6 +119,15 @@
             padding: 10px 0;
             background-color: #00796b;
             border-radius: 10px;
+        }
+
+        .no-news {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border: 1px solid #ddd; /* Добавим рамку */
         }
     </style>
 </head>
@@ -94,44 +150,44 @@
     <c:choose>
         <c:when test="${not empty newsList}">
             <c:forEach var="news" items="${newsList}">
-
                 <div class="news-card">
-
-                    <h5>${news.title}</h5>
-                    <c:if test="${open_news_id == news.id}">
-                        <p>${news.text}</p>
-                    </c:if>
-                    <c:if test="${open_news_id != news.id}">
-                        <p>${news.brief}</p>
-                    </c:if>
-                    <div class="btn-group">
-
-                        <form action="Controller" method="post" accept-charset="UTF-8">
-                            <input type="hidden" name="id" value="${news.id}"/>
-
-                            <input type="hidden" name="command" value="go_to_index_page"/>
-                            <button class="btn btn-primary" type="submit">Открыть</button>
-                        </form>
-
-                        <c:if test="${role == 'ADMIN' || role == 'JOURNALIST' }">
-                            <form action="Controller" method="post" style="display: inline;">
-                                <input type="hidden" name="id" value="${news.id}"/>
-                                <input type="hidden" name="command" value="delete_news"/>
-                                <button class="btn btn-danger" type="submit">Удалить</button>
-                            </form>
+                    <img src="${news.image}" alt="${news.title}" />
+                    <div class="content">
+                        <h5>${news.title}</h5>
+                        <c:if test="${open_news_id == news.id}">
+                            <p>${news.text}</p>
                         </c:if>
+                        <c:if test="${open_news_id != news.id}">
+                            <p>${news.brief}</p>
+                        </c:if>
+                        <div class="btn-group">
+                            <form action="Controller" method="post" accept-charset="UTF-8">
+                                <input type="hidden" name="id" value="${news.id}" />
+                                <input type="hidden" name="command" value="go_to_index_page" />
+                                <button class="btn btn-primary" type="submit">Открыть</button>
+                            </form>
 
+                            <c:if test="${role == 'ADMIN' || role == 'JOURNALIST'}">
+                                <form action="Controller" method="post" style="display: inline;">
+                                    <input type="hidden" name="id" value="${news.id}" />
+                                    <input type="hidden" name="command" value="delete_news" />
+                                    <button class="btn btn-danger" type="submit">Удалить</button>
+                                </form>
+                            </c:if>
+                        </div>
                     </div>
                 </div>
             </c:forEach>
         </c:when>
         <c:otherwise>
-            <p>Нет доступных новостей.</p>
+            <div class="no-news">
+                <p>Нет доступных новостей.</p>
+            </div>
         </c:otherwise>
     </c:choose>
-    <c:if test="${role == 'ADMIN' || role == 'JOURNALIST' }">
+    <c:if test="${role == 'ADMIN' || role == 'JOURNALIST'}">
         <div class="text-center mt-5">
-            <form action="Controller" method="post" >
+            <form action="Controller" method="post">
                 <input type="hidden" name="command" value="go_to_add_news_page" />
                 <button class="btn btn-success btn-lg" type="submit">Добавить новость</button>
             </form>
