@@ -6,22 +6,29 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private long id;
+
     private String email = "email";
+
     private String password;
+
     private String name;
+
     private String surname = "sur";
+
     private Role role;
+
     private LocalDate birthDate = LocalDate.now();
+
     private LocalDateTime registrationDate;
 
     public User(long id, String email, String password, String name, String surname, Role role, LocalDate birthDate, LocalDateTime registrationDate) {
+
         this.id = id;
         this.email = email;
         this.password = password;
@@ -33,18 +40,21 @@ public class User implements Serializable {
     }
 
     public User(String name, String password) {
+
         super();
         this.name = name;
         this.password = password;
     }
 
     public User(String name, String password, Role role) {
+
         this.name = name;
         this.role = role;
         this.password = password;
     }
 
     public User(String email, String password, String name, String surname, Role role, LocalDateTime registrationDate) {
+
         this.email = email;
         this.password = password;
         this.name = name;
@@ -123,6 +133,7 @@ public class User implements Serializable {
 
     @Override
     public boolean equals(Object o) {
+
         if (this == o) return true;
 
         if (o == null || getClass() != o.getClass()) return false;
@@ -138,6 +149,7 @@ public class User implements Serializable {
 
     @Override
     public int hashCode() {
+
         return new HashCodeBuilder(17, 37).append(email).append(password).append(name).append(surname).append(role).append(registrationDate).toHashCode();
     }
 
@@ -146,6 +158,7 @@ public class User implements Serializable {
     }
 
     public enum Role {
+
         ADMIN,
         JOURNALIST,
         READER

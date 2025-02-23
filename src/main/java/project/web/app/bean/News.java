@@ -62,6 +62,7 @@ public class News implements Serializable {
 	}
 
 	public void setImage(String image) {
+
 		this.image = image;
 	}
 
@@ -75,6 +76,7 @@ public class News implements Serializable {
 
 	@Override
 	public boolean equals(Object o) {
+
 		if (this == o) return true;
 
 		if (o == null || getClass() != o.getClass()) return false;
@@ -86,11 +88,13 @@ public class News implements Serializable {
 
 	@Override
 	public int hashCode() {
+
 		return new HashCodeBuilder(17, 37).append(id).append(title).append(brief).append(text).append(image).append(authorId).toHashCode();
 	}
 
 	@Override
 	public String toString() {
+
 		return "News{" +
 				"id=" + id +
 				", title='" + title + '\'' +
